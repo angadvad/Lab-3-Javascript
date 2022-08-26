@@ -53,3 +53,63 @@ undefined + 1     //Nan
 // const delayHello = delay(hello, 3000);
 // delayHello("World");
 
+//Q8
+
+// let schedule = {};
+
+// function isEmpty(obj){
+//     if (JSON.stringify(obj)=="{}"){
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
+
+// console.log( isEmpty(schedule) ); // true
+// schedule["8:30"] = "get up";
+// console.log( isEmpty(schedule) ); // false
+
+//Q9    LADDER OBJECT
+
+// let ladder = {
+//     step:0,
+//     up(){
+//         this.step++;
+//         return this;
+//     },
+//     down(){
+//         this.step--;
+//         return this;
+//     },
+//     showStep: function(){   // shows the current step
+//         console.log(this.step);
+//     }
+// }
+
+// ladder.up().up().down().showStep(); //1
+
+//Q10 ACCUMULATOR
+
+class Accumulator {
+
+    constructor(value){
+        this.value=value;
+    }
+    
+    read(){
+        const input = prompt("Enter an integer-value please:");
+
+        if (isNaN(input)){
+            alert(`Your input: "${input}" is invalid`);
+            //input is invalid
+        }else{
+            this.value= this.value + parseInt(input);
+        }
+    }
+}
+
+let accumulator = new Accumulator(0); // initial value 1
+accumulator.read(); // adds the user-entered value
+accumulator.read(); // adds the user-entered value
+console.log(accumulator.value); // shows the sum of these values
