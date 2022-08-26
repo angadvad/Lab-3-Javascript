@@ -91,25 +91,25 @@ undefined + 1     //Nan
 
 //Q10 ACCUMULATOR
 
-class Accumulator {
+// class Accumulator {
 
-    constructor(value){
-        this.value=value;
-    }
+//     constructor(value){
+//         this.value=value;
+//     }
     
-    read(){
-        const input = prompt("Enter an integer-value please:");
+//     read(){
+//         const input = prompt("Enter an integer-value please:");
 
-        if (isNaN(input)){
-            alert(`Your input: "${input}" is invalid`);
-            //input is invalid
-        }else{
-            this.value= this.value + parseInt(input);
-        }
-    }
-}
+//         if (isNaN(input)){
+//             alert(`Your input: "${input}" is invalid`);
+//             //input is invalid
+//         }else{
+//             this.value= this.value + parseInt(input);
+//         }
+//     }
+// }
 
-let accumulator = new Accumulator(0); // initial value 1
-accumulator.read(); // adds the user-entered value
-accumulator.read(); // adds the user-entered value
-console.log(accumulator.value); // shows the sum of these values
+// let accumulator = new Accumulator(0); // initial value 1
+// accumulator.read(); // adds the user-entered value
+// accumulator.read(); // adds the user-entered value
+// console.log(accumulator.value); // shows the sum of these values
