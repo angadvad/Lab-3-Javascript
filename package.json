@@ -1,0 +1,24 @@
+{
+  "name": "lab-3-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "27_08_22.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angadvad/Lab-3-Javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angadvad/Lab-3-Javascript/issues"
+  },
+  "homepage": "https://github.com/angadvad/Lab-3-Javascript#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+  },
+  "type":"module"
+}

@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>REST COUNTRIES API EXAMPLE</title>
+    
+</head>
+
+<body>
+    <script>
+        const countriesAPI = 'https://restcountries.com/v2/all';
+        let countries;
+            function printCountry(){
+                fetch(countriesAPI, {
+                    method:"GET"
+                })
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(data){
+                    initialize(data);
+                })
+            
+                function initialize(countriesData){
+                    countries=countriesData;
+                    console.log(`Country Name: ${countries[100].name}\nCapital: ${countries[100].capital}\nLanguages: ${countries[100].languages[0].name}`);
+                    console.log(`Population=: ${countries[100].population}\nArea=: ${countries[100].area}`);
+                    // console.log("--------------");
+                    // console.log(Object.keys(countries[100]));
+
+                    document.getElementById("cname").innerHTML=`Country Name: ${countries[100].name}`;
+                    document.getElementById("cap").innerHTML=`Capital: ${countries[100].capital}`;
+                    document.getElementById("lang").innerHTML=`Languages: ${countries[100].languages[0].name}`;
+                    document.getElementById("pop").innerHTML=`Population=: ${countries[100].population}`;
+                    document.getElementById("area").innerHTML=`Area=: ${countries[100].area}`;
+                }
+            
+            }
+            
+            printCountry();
+            
+        
+        </script>
+
+        <p id="cname"> </p>
+        <p id="cap"> </p>
+        <p id="lang"> </p>
+        <p id="pop"> </p>
+        <p id="area"> </p>
+
+</body>
+
+</html>
+
+
