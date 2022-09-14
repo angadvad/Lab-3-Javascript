@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/angadvad/Lab-3-Javascript#readme",
   "dependencies": {
-    "node-fetch": "^3.2.10"
+    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
+    "node-fetch": "^3.2.10",
+    "prompt-sync": "^4.2.0"
   },
-  "type":"module"
+  "type": "module"
 }
