@@ -275,19 +275,22 @@
 // delay(3000).then(() => console.log('runs after 3 seconds'));
 
 //Q13
+// import fetch from 'node-fetch';
+// const countriesAPI = 'https://restcountries.com/v2/all'
 
-function loadJson(url) {
-    return fetch(url)
-        .then(response => {
-            if (response.status == 200) {
+// async function loadJson(url) { // (1)
+//     let response = await fetch(url, {method:"GET"}); // (2)
+//     console.log(`STATUS: ${response.status}`);
 
+//     if (response.status == 200) {
+//         //if successful return response
+//         console.log(`response successful\n`);
+//         return response;
+//     }else{
+//         //throw new Error(response.status);
+//         console.log(`ERROR: ${response.status}`);
+//     }
+// }
 
-                return response.json();
-            } else {
-                throw new Error(response.status);
-            }
-        });
-}
-
-loadJson('no-such-user.json')
-    .catch(alert); // Error: 404
+// loadJson('https://javascript.info/no-such-user.json'); // Error: 404
+// loadJson(countriesAPI); // API response (status 200)
