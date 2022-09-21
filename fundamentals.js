@@ -49,7 +49,7 @@ undefined + 1     //Nan
 //Q7
 
 // const hello = (who) => console.log('Hello' + who );
-// const delay = (func,mSeconds) => (...arg) => setTimeout(() => func.apply(null, arg),mSeconds);
+// const delay = (func,mSeconds) => (...arg) => setTimeout(() => func.apply(null, arg), mSeconds);
 // const delayHello = delay(hello, 3000);
 // delayHello("World");
 

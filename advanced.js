@@ -17,11 +17,11 @@
 // let counter = makeCounter();
 // let counter2 = makeCounter();
 // let counter3 = makeCounter();
-// console.log(counter()); // 0
-// console.log(counter()); // 1
+// console.log(counter()); // 0 //actually 1, since it does ++ before returning
+// console.log(counter()); // 1 //therefore this is 2
 // //different instance
-// console.log(counter2()); // 0
 // console.log(counter2()); // 1
+// console.log(counter2()); // 2
 
 //Q2
 
@@ -42,10 +42,17 @@
 //     let timerId = setInterval(() => console.log(counter++), 1000);
 
 //     let end = (to - from)*1000+1000;
-//     setTimeout(() => { clearInterval(timerId); console.log(to); }, end);
+//     setTimeout(() => { clearInterval(timerId); console.log(to); }, end); //sets a timeout to clear the interval after printing all numbers, nice
+
+//     //could also do it this way, by clearing the interval as soon as it reaches the goal
+//     // let timerId2 = setInterval(function() { 
+//     //     console.log(counter); 
+//     //     if (counter == to) clearInterval(timerId2);
+//     //     counter++;        
+//     // }, 1000);    
 // };
 
-//printNumbers(3,6); //count 3->6
+// printNumbers(3,6); //count 3->6
 
 //2. Using nested setTimeout
 
@@ -250,7 +257,7 @@
 // class FormatError extends SyntaxError {
 //     constructor(name){
 //         super(name);
-//         this.name = 'FormatError';
+//         this.name = 'FormatError'; // also this.constructor.name would work
 //         //this.stack= 'stack';
 //     }
 // }
@@ -266,7 +273,7 @@
 
 // function delay(ms) {
 //     const promise = new Promise(function(resolve) {
-//        setTimeout(() => resolve(""),ms);
+//        setTimeout(() => resolve(""),ms); // or just setTimeout(resolve,ms)
 //        });
 
 //     return promise// your code
@@ -275,22 +282,25 @@
 // delay(3000).then(() => console.log('runs after 3 seconds'));
 
 //Q13
-// import fetch from 'node-fetch';
-// const countriesAPI = 'https://restcountries.com/v2/all'
+import fetch from 'node-fetch';
+const countriesAPI = 'https://restcountries.com/v2/all'
+const jsonplaceholderAPI = 'https://jsonplaceholder.typicode.com/posts'
 
-// async function loadJson(url) { // (1)
-//     let response = await fetch(url, {method:"GET"}); // (2)
-//     console.log(`STATUS: ${response.status}`);
+async function loadJson(url) { // (1)
+    let response = await fetch(url, {method:"GET"}); // (2)
+    console.log(`STATUS: ${response.status}`);
 
-//     if (response.status == 200) {
-//         //if successful return response
-//         console.log(`response successful\n`);
-//         return response;
-//     }else{
-//         //throw new Error(response.status);
-//         console.log(`ERROR: ${response.status}`);
-//     }
-// }
+    if (response.status == 200) {
+        //if successful return response
+        console.log(`response successful\n`);
+        const json = await response.json() //do this step as well to get the actual response
+        return json
+    }else{
+        //throw new Error(response.status);
+        console.log(`ERROR: ${response.status}`);
+    }
+}
 
-// loadJson('https://javascript.info/no-such-user.json'); // Error: 404
-// loadJson(countriesAPI); // API response (status 200)
+loadJson('https://javascript.info/no-such-user.json'); // Error: 404
+loadJson(countriesAPI); // API response (status 200) //sometimes fails?
+loadJson(jsonplaceholderAPI)

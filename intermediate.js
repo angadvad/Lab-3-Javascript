@@ -161,64 +161,66 @@ console.log(`text "${messages[0].text}!" from ${messages[0].from} - read status:
 console.log(`text "${messages[1].text}!" from ${messages[1].from} - read status: ${readMessages.has(messages[1])}`); //True
 console.log(`text "${messages[2].text}!" from ${messages[2].from} - read status: ${readMessages.has(messages[2])}`); //False
 
-messages.shift(); //message[1]
+//messages.shift(); //message[1]
+messages[0] = null;
 
 console.log(messages);
+console.log(readMessages.has(messages[0])); //this shows that weaksets automatically remove (garbage collect) elements that no longer exist in memory
 
 
 /* -------------------------------------------------------------------------------------------------------- */
 
 //Q9 & Q10
 
-// let salaries = {
-//     "John": 100,
-//     "Pete": 300,
-//     "Mary": 250
-// };
+let salaries = {
+    "John": 100,
+    "Pete": 300,
+    "Mary": 250
+};
 
-// let salaries1 = {};
+let salaries1 = {};
 
-// function sumSalaries(obj) {
-//     let sum = 0;
-//     for (const items in obj) {
-//         sum += obj[items];
-//     }
-//     return sum;
-// }
+function sumSalaries(obj) {
+    let sum = 0;
+    for (const items in obj) {
+        sum += obj[items];
+    }
+    return sum;
+}
 
-// console.log(sumSalaries(salaries)); // 650
-// console.log(sumSalaries(salaries1)); // 0
+console.log(sumSalaries(salaries)); // 650
+console.log(sumSalaries(salaries1)); // 0
 
-// function topSalary(salaries) {
-//     let topSal = 0;
-//     let topName = null;
+function topSalary(salaries) {
+    let topSal = 0;
+    let topName = null;
 
 
-//     for (const key1 in salaries) {
+    for (const key1 in salaries) {
 
-//         if (topSal < salaries[key1]) {
-//             topSal = salaries[key1];
-//             topName = key1;
-//         }
-//     }
+        if (topSal < salaries[key1]) {
+            topSal = salaries[key1];
+            topName = key1;
+        }
+    }
 
-//     return topName;
-// }
+    return topName;
+}
 
-// console.log(topSalary(salaries));
-// console.log(topSalary(salaries1));
+console.log(topSalary(salaries));
+console.log(topSalary(salaries1));
 
 /* -------------------------------------------------------------------------------------------------------- */
 
 //Q11
 
-// function getSecondsToday() {
-//     const now = new Date();
-//     let secondsNow = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds() + now.getMilliseconds()/1000;
-//     return secondsNow;
-// }
+function getSecondsToday() {
+    const now = new Date();
+    let secondsNow = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds() + now.getMilliseconds()/1000;
+    return secondsNow;
+}
 
-// console.log(getSecondsToday());
+console.log(getSecondsToday());
 
 /* -------------------------------------------------------------------------------------------------------- */
 
@@ -227,28 +229,28 @@ console.log(messages);
 // Write replacer function to stringify everything, but
 // remove properties that reference meetup:
 
-// let room = {
-//  number: 23
-// };
-// let meetup = {
-//  title: "Conference",
-//  occupiedBy: [{name: "John"}, {name: "Alice"}],
-//  place: room
-// };
-// // circular references
-// room.occupiedBy = meetup;
-// meetup.self = meetup;
+let room = {
+ number: 23
+};
+let meetup = {
+ title: "Conference",
+ occupiedBy: [{name: "John"}, {name: "Alice"}],
+ place: room
+};
+// circular references
+room.occupiedBy = meetup;
+meetup.self = meetup;
 
 
-// console.log( JSON.stringify(meetup, function replacer(key,value) {
+console.log( JSON.stringify(meetup, function replacer(key,value) {
 
-//     if (key && value==meetup){
-//         return undefined;
-//     }else{
-//         return value;
-//     }
+    if (key && value==meetup){
+        return undefined;
+    }else{
+        return value;
+    }
 
-// }));
+}));
 
 /* result should be:
 {
